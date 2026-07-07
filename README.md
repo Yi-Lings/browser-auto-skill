@@ -50,6 +50,13 @@ WIN_TMP=$(python -c "import tempfile; print(tempfile.gettempdir())" 2>/dev/null 
 ---
 
 ## 安装方式
+1.对智能体直接说
+
+```bash
+帮我安装这个skill "https://github.com/Yi-Lings/browser-auto-skill/"
+```
+
+2.手动安装
 
 ### Claude Code
 
