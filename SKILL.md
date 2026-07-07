@@ -1,12 +1,13 @@
 ---
 name: browser-auto-script
-description: 总结 playwright-cli 浏览器自动化脚本编写的最佳实践、通用流程与 Windows 平台踩坑记录。遇到自动化需求时先读此 skill。
-allowed-tools: Bash(playwright-cli:*) Bash(python:*) Bash(cmd.exe:*) Read(*) Write(*) Edit(*)
+description: 总结 playwright-cli 浏览器自动化脚本编写的最佳实践、通用流程与 Windows 平台踩坑记录。适用于 Claude Code、Codex、Cursor 等 AI 编程助手。
 ---
 
 # 浏览器自动化脚本编写指南
 
 基于 DeepSeek API 用量查询脚本的实际开发经验，提炼出的通用方法论和踩坑记录。
+
+> **兼容性：** 本指南可作为 AI 编程助手的自定指令使用，支持 Claude Code（放置于 `.claude/skills/`）、VS Code Codex / Agent 模式（放置于 `.github/copilot-instructions.md`）、Cursor 等。
 
 ---
 
@@ -285,6 +286,7 @@ data = json.load(open(os.path.join(WIN_TMP, "my_data.json")))
 
 ---
 
-## 触发
+## 触发（AI 编程助手指令）
 
-用户说"自动化浏览器脚本"、"playwright 脚本"、"浏览器自动化"、"编写自动化脚本"、"做自动化流程"、"写个脚本自动打开网页"或任何涉及 playwright-cli 浏览器自动化脚本编写的需求。先读此 skill 再动手。
+当用户表达以下意图时，AI 编程助手应读取本指南并按其方法论工作：
+"自动化浏览器脚本"、"playwright 脚本"、"浏览器自动化"、"编写自动化脚本"、"做自动化流程"、"写个脚本自动打开网页"，或任何涉及 playwright-cli 浏览器自动化脚本编写的需求。

@@ -2,10 +2,10 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-面向 **Claude Code** 的浏览器自动化脚本编写技能，基于 [Playwright CLI](https://www.npmjs.com/package/playwright-cli) 封装。总结最佳实践、通用工作流和 Windows 平台踩坑记录。
+浏览器自动化脚本编写最佳实践与踩坑记录 — 基于 [Playwright CLI](https://www.npmjs.com/package/playwright-cli)，适用于各类 AI 编程助手。
 
-> **⚠️ 此为 AI 助手技能，非独立工具。**  
-> 由 [Claude Code](https://claude.ai/code)（或兼容的 AI 编程代理）在用户提出浏览器自动化需求时加载——AI 读取 `SKILL.md` 后按其中的方法论现场编写脚本。
+> **⚠️ 此为 AI 助手指令集，非独立可执行工具。**  
+> 由 AI 编程助手（Claude Code、VS Code Codex/Agent 模式 等）在用户提出浏览器自动化需求时读取，按其中的方法论现场编写脚本。
 
 ---
 
@@ -22,29 +22,54 @@
 
 ## 使用方法
 
-此技能由 Claude Code 在会话中消费。触发方式（向 AI 说出以下任一）：
+### 作为 AI 助手技能
+
+向 AI 说出以下任一：
 
 - "写个浏览器自动化脚本"
 - "帮我用 playwright-cli 自动化这个操作"
 - "Browser automation with playwright-cli"
 - "编写自动化脚本抓取页面数据"
 
-AI 将读取该技能并按照其方法论生成完整脚本。
+AI 将读取本指南并按照其方法论生成完整脚本。
 
-### 手动生成脚本
+### 手动参考
 
-无需 AI 协助时，可阅读 [`SKILL.md`](SKILL.md) 中的**模板**章节自行组装：
+无需 AI 协助时，可直接阅读 [`SKILL.md`](SKILL.md) 中的模板章节自行组装：
 
 ```bash
-# 最小 bash 骨架
 #!/usr/bin/env bash
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 WIN_TMP=$(python -c "import tempfile; print(tempfile.gettempdir())" 2>/dev/null || echo "/tmp")
 
-# Step 1-6: 遵循 SKILL.md 中的工作流
+# 步骤 1-6：遵循 SKILL.md 中的工作流
 ```
+
+---
+
+## 安装方式
+
+### Claude Code
+
+将本仓库克隆到项目的 `.claude/skills/` 目录下：
+
+```bash
+# 在项目根目录执行
+mkdir -p .claude/skills
+git clone https://github.com/Yi-Lings/browser-auto-skill.git .claude/skills/browser-auto-script
+```
+
+Claude Code 会自动加载 `SKILL.md` 作为可用技能。
+
+### VS Code (Codex / Agent 模式)
+
+将 `SKILL.md` 的内容复制到项目根目录的 `.github/copilot-instructions.md` 中，或直接将文件链接加入 Codex 上下文。
+
+### 其他 AI 编程工具
+
+大多数 AI 编程助手支持通过 Markdown 文件提供自定义指令。将 `SKILL.md` 作为上下文指令文件引入即可。
 
 ---
 
@@ -63,18 +88,18 @@ WIN_TMP=$(python -c "import tempfile; print(tempfile.gettempdir())" 2>/dev/null 
 
 ```
 browser-auto-skill/
-├── SKILL.md      # 技能核心定义 — 工作流、模式、坑点
+├── SKILL.md      # 核心 — 工作流、模式、坑点
 ├── README.md     # 本文件
 └── LICENSE       # MIT
 ```
 
-本技能仅分发指令文件 `SKILL.md` 加文档。脚本模板和代码片段以内嵌 heredoc 形式写在 `SKILL.md` 中，无需外部运行时文件。
+本仓库仅分发指令文件 `SKILL.md` 加文档。脚本模板和代码片段以内嵌 heredoc 形式写在 `SKILL.md` 中，无需外部运行时文件。
 
 ---
 
 ## 已知问题 / 坑点
 
-详见 `SKILL.md` §4（"已知坑与解决方案"）。要点速览：
+详见 `SKILL.md` §4。要点速览：
 
 | 问题 | 解决方案 |
 |------|----------|
